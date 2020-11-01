@@ -19,7 +19,9 @@ def algoCompare(methods, span, logt = False, **kwargs):
             t = time.time()
             result = f(n, **kwargs)
             dt = time.time() - t
-            if logt: dt = log10(dt)
+            if logt:
+                try: dt = log10(dt)
+                except: dt = -6
             delay[s].append(dt)
         s1 = f"\rIteration: {n} | "
         if DT != 0:
